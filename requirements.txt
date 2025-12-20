@@ -4,9 +4,6 @@ python-multipart
 rembg
 Pillow
 numpy
-opencv-python-headless
-torch
-torchvision
 onnxruntime
 pooch
 tqdm
