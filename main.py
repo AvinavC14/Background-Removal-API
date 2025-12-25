@@ -18,7 +18,7 @@ app = FastAPI(
 # CORS configuration for Next.js frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Allow all origins - change to specific domains in production for security
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -194,4 +194,6 @@ async def batch_remove_background(
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Use PORT environment variable from Railway, fallback to 8000 for local development
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
